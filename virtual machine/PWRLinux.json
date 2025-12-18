@@ -1,0 +1,6 @@
+{
+  "name": "PWRLinux",
+  "mode": "Student",
+  "shell": "Restricted",
+  "internet": false
+}
