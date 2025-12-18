@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Windows 10 School VM</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body{margin:0;font-family:Segoe UI;background:#1e1e1e;color:white;overflow:hidden}
+.taskbar{position:fixed;bottom:0;width:100%;height:40px;background:#111;display:flex;align-items:center}
+.start{width:60px;text-align:center;cursor:pointer}
+.menu{position:fixed;bottom:40px;left:0;width:260px;height:360px;background:#202020;display:none;padding:10px}
+.menu div{padding:8px;cursor:pointer}
+.menu div:hover{background:#333}
+.window{position:absolute;top:80px;left:120px;width:640px;height:420px;background:#0f172a;color:#e5e7eb;display:none;box-shadow:0 10px 40px rgba(0,0,0,.6)}
+.title{background:#2563eb;color:white;padding:6px;cursor:move}
+.vm{height:100%;padding:10px;font-family:monospace;overflow:auto}
+button{margin:4px}
+textarea{width:100%;height:120px;background:#020617;color:#e5e7eb;border:1px solid #334155}
+pre{white-space:pre-wrap}
+</style>
+</head>
+<body>
+
+<!-- START MENU -->
+<div class="menu" id="menu">
+  <div onclick="openVM()">🖥 School Virtual Machine</div>
+  <div onclick="alert('Offline • Locked • Education Safe')">🔒 Safety Mode</div>
+</div>
+
+<!-- VM WINDOW -->
+<div class="window" id="vmWin">
+  <div class="title" onmousedown="drag(event)">PWRLinux / JPCLinux VM</div>
+  <div class="vm" id="vm">
+    <b>Select VM:</b><br>
+    <button onclick="loadVM('PWRLinux')">PWRLinux</button>
+    <button onclick="loadVM('JPCLinux')">JPCLinux</button>
+    <hr>
+
+    <b>Languages:</b><br>
+    <button onclick="lang('js')">JS</button>
+    <button onclick="lang('py')">PY</button>
+    <button onclick="lang('sh')">SH</button>
+    <button onclick="lang('h')">H</button>
+    <button onclick="lang('tw')">Tailwind</button>
+
+    <textarea id="editor">// Select a language</textarea>
+    <pre id="output"></pre>
+  </div>
+</div>
+
+<!-- TASKBAR -->
+<div class="taskbar">
+  <div class="start" onclick="toggle()">🪟</div>
+</div>
+
+<script>
+const menu=document.getElementById("menu");
+const vmWin=document.getElementById("vmWin");
+const editor=document.getElementById("editor");
+const out=document.getElementById("output");
+
+function toggle(){menu.style.display=menu.style.display?"":"block"}
+function openVM(){vmWin.style.display="block";menu.style.display="none"}
+
+function loadVM(name){
+out.textContent =
+name==="PWRLinux"
+? "PWRLinux 1.0\nMode: Student\nShell: Restricted\n"
+: "JPCLinux Classroom\nFocus: Coding\nNo Internet\n";
+}
+
+function lang(t){
+if(t==="js"){
+editor.value=`// JavaScript (Safe Preview)
+console.log("Hello School");`;
+out.textContent="JS Output:\nHello School";
+}
+if(t==="py"){
+editor.value=`# Python (Simulated)
+print("Hello Class")`;
+out.textContent="Python Output:\nHello Class";
+}
+if(t==="sh"){
+editor.value=`# Shell (Restricted)
+ls
+pwd`;
+out.textContent="Shell:\nDocuments  Homework  Projects";
+}
+if(t==="h"){
+editor.value=`// C Header File
+#ifndef MAIN_H
+#define MAIN_H
+void hello();
+#endif`;
+out.textContent="Header file validated ✓";
+}
+if(t==="tw"){
+editor.value=`<div class="bg-blue-600 text-white p-4 rounded">
+Tailwind UI Box
+</div>`;
+out.textContent="Tailwind Preview Ready ✓";
+}
+}
+
+/* Drag window */
+function drag(e){
+let x=e.clientX,y=e.clientY;
+document.onmousemove=ev=>{
+vmWin.style.left=vmWin.offsetLeft+ev.clientX-x+"px";
+vmWin.style.top=vmWin.offsetTop+ev.clientY-y+"px";
+x=ev.clientX;y=ev.clientY;
+};
+document.onmouseup=()=>document.onmousemove=null;
+}
+</script>
+</body>
+</html>
