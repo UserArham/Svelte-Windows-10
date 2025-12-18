@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  font-family: Segoe UI, Inter, sans-serif;
+  background: #0b0f14;
+  color: #d1d5db;
+}
+
+.window {
+  background: #111827;
+  border: 1px solid #1f2937;
+}
+
+.title {
+  background: #020617;
+  border-bottom: 1px solid #1f2937;
+  font-size: 13px;
+}
+
+.tree {
+  background: #020617;
+  border-right: 1px solid #1f2937;
+  font-size: 13px;
+}
+
+textarea, pre {
+  background: #020617;
+  color: #e5e7eb;
+  font-family: Consolas, "JetBrains Mono", monospace;
+  font-size: 12px;
+}
