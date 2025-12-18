@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Virtual Lab Environment</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+<!-- ACCESS -->
+<div id="access">
+  <h2>Virtual Lab Access</h2>
+  <button onclick="login('user')">User</button>
+  <button onclick="login('instructor')">Instructor</button>
+</div>
+
+<!-- START -->
+<div id="start" onclick="toggleMenu()">Start</div>
+
+<!-- MENU -->
+<div id="menu">
+  <div onclick="openLab()">Virtual Lab</div>
+</div>
+
+<!-- LAB WINDOW -->
+<div class="window" id="lab">
+  <div class="title" onmousedown="drag(event)">
+    PWRLinux / JPCLinux — Restricted Environment
+  </div>
+
+  <div class="layout">
+    <!-- WORKSPACE -->
+    <div class="tree">
+      <div class="header">Workspace</div>
+      <div onclick="openFile('hello.js')">hello.js</div>
+      <div onclick="openFile('hello.py')">hello.py</div>
+      <div onclick="openFile('script.sh')">script.sh</div>
+      <div onclick="openFile('main.h')">main.h</div>
+      <div onclick="openFile('tailwind.html')">tailwind.html</div>
+    </div>
+
+    <!-- EDITOR -->
+    <textarea id="editor" readonly></textarea>
+  </div>
+
+  <!-- OUTPUT -->
+  <pre id="output"></pre>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
