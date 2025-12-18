@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Windows 10 School VM</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login">
+  <h2>School VM Login</h2>
+  <button onclick="login('student')">Student</button>
+  <button onclick="login('teacher')">Teacher</button>
+</div>
+
+<!-- START -->
+<div id="start" onclick="toggleMenu()">🪟</div>
+
+<!-- MENU -->
+<div id="menu">
+  <div onclick="openVM()">🖥 Virtual Machine</div>
+</div>
+
+<!-- VM WINDOW -->
+<div class="window" id="vmWin">
+  <div class="title" onmousedown="drag(event)">School Virtual Machine</div>
+
+  <div class="layout">
+    <!-- FILE TREE -->
+    <div class="tree">
+      <b>Files</b>
+      <div onclick="openFile('hello.js')">📄 hello.js</div>
+      <div onclick="openFile('hello.py')">📄 hello.py</div>
+      <div onclick="openFile('script.sh')">📄 script.sh</div>
+      <div onclick="openFile('main.h')">📄 main.h</div>
+      <div onclick="openFile('tailwind.html')">📄 tailwind.html</div>
+    </div>
+
+    <!-- EDITOR -->
+    <textarea id="editor" readonly></textarea>
+  </div>
+
+  <!-- COMPILER OUTPUT -->
+  <pre id="output"></pre>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
