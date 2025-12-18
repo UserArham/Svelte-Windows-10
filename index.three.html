@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Windows 10 School VM</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="desktop">
+  <div id="start" onclick="toggleMenu()">🪟</div>
+</div>
+
+<div id="menu">
+  <div onclick="openVM()">🖥 Virtual Machine</div>
+</div>
+
+<div class="window" id="vmWin">
+  <div class="title" onmousedown="drag(event)">School Virtual Machine</div>
+  <pre id="terminal"></pre>
+  <select onchange="openFile(this.value)">
+    <option value="">Open file…</option>
+    <option value="hello.js">hello.js</option>
+    <option value="hello.py">hello.py</option>
+    <option value="script.sh">script.sh</option>
+    <option value="main.h">main.h</option>
+    <option value="tailwind.html">tailwind.html</option>
+  </select>
+  <textarea id="editor"></textarea>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
