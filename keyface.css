@@ -1,0 +1,15 @@
+body{margin:0;font-family:Segoe UI;background:#1e1e1e;color:white}
+#login{text-align:center;margin-top:120px}
+#start{position:fixed;bottom:0;left:0;width:60px;height:40px;background:#111;text-align:center;line-height:40px;cursor:pointer}
+#menu{position:fixed;bottom:40px;left:0;width:200px;background:#202020;display:none}
+#menu div{padding:10px;cursor:pointer}
+#menu div:hover{background:#333}
+
+.window{position:absolute;top:60px;left:120px;width:700px;height:450px;background:#0f172a;display:none}
+.title{background:#2563eb;padding:6px;cursor:move}
+.layout{display:flex;height:300px}
+.tree{width:180px;background:#020617;padding:6px}
+.tree div{cursor:pointer;padding:4px}
+.tree div:hover{background:#1e293b}
+textarea{flex:1;background:#020617;color:#e5e7eb;border:none;padding:6px}
+pre{background:#020617;padding:6px;height:90px;overflow:auto}
