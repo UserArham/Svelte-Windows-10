@@ -1,1 +1,2 @@
+echo "Restricted shell"
 
