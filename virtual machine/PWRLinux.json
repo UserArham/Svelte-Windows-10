@@ -4,3 +4,8 @@
   "shell": "Restricted",
   "internet": false
 }
+{
+  "name": "JPCLinux",
+  "focus": "Education",
+  "languages": ["JS", "PY", "SH", "H", "Tailwind"]
+}
