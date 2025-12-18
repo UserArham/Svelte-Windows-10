@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Windows 10 – School VM Simulator</title>
+<style>
+body{margin:0;font-family:Segoe UI;background:#1e1e1e;color:white;overflow:hidden}
+.taskbar{position:fixed;bottom:0;width:100%;height:40px;background:#111;display:flex;align-items:center}
+.start{width:60px;text-align:center;cursor:pointer}
+.menu{position:fixed;bottom:40px;left:0;width:260px;height:340px;background:#202020;display:none;padding:10px}
+.menu div{padding:8px;cursor:pointer}
+.menu div:hover{background:#333}
+.window{position:absolute;top:80px;left:120px;width:520px;height:360px;background:#f0f0f0;color:black;display:none;box-shadow:0 10px 40px rgba(0,0,0,.6)}
+.title{background:#0078d7;color:white;padding:6px;cursor:move}
+.vm{background:#0b1c2d;color:#8fd3ff;height:100%;padding:10px;font-family:monospace}
+button{margin:4px}
+</style>
+</head>
+<body>
+
+<!-- START MENU -->
+<div class="menu" id="menu">
+  <div onclick="openVM()">🖥 Virtual Machine</div>
+  <div onclick="alert('School-safe mode enabled')">🔒 Safety Info</div>
+</div>
+
+<!-- VM WINDOW -->
+<div class="window" id="vmWin">
+  <div class="title" onmousedown="drag(event)">School Virtual Machine</div>
+  <div class="vm" id="vm">
+    <b>Select VM:</b><br><br>
+    <button onclick="loadVM('PWRLinux')">PWRLinux</button>
+    <button onclick="loadVM('JPCLinux')">JPCLinux</button>
+    <hr>
+    <pre id="terminal"></pre>
+  </div>
+</div>
+
+<!-- TASKBAR -->
+<div class="taskbar">
+  <div class="start" onclick="toggle()">🪟</div>
+</div>
+
+<script>
+const menu = document.getElementById("menu");
+const vmWin = document.getElementById("vmWin");
+const term = document.getElementById("terminal");
+
+function toggle(){menu.style.display=menu.style.display?"":"block"}
+function openVM(){vmWin.style.display="block";menu.style.display="none"}
+
+function loadVM(name){
+  if(name==="PWRLinux"){
+    term.textContent =
+`PWRLinux 1.0 (Education Edition)
+-------------------------------
+User: student
+Mode: Restricted
+Commands:
+ - help
+ - list
+ - info
+
+$`;
+  }
+  if(name==="JPCLinux"){
+    term.textContent =
+`JPCLinux Classroom OS
+---------------------
+Focus: Coding & Logic
+Apps:
+ - Python Tutor
+ - Text Editor
+ - Calculator
+
+$`;
+  }
+}
+
+/* Drag */
+function drag(e){
+  let x=e.clientX,y=e.clientY;
+  document.onmousemove=ev=>{
+    vmWin.style.left=vmWin.offsetLeft+ev.clientX-x+"px";
+    vmWin.style.top=vmWin.offsetTop+ev.clientY-y+"px";
+    x=ev.clientX;y=ev.clientY;
+  };
+  document.onmouseup=()=>document.onmousemove=null;
+}
+</script>
+</body>
+</html>
